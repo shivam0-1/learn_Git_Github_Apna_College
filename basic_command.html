@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Git & GitHub Notes (Basics to Clone & Status)</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    color:#333;
+    line-height:1.8;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:30px auto;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+    overflow:hidden;
+}
+
+header{
+    background:#1565c0;
+    color:#fff;
+    padding:30px;
+    text-align:center;
+}
+
+header h1{
+    font-size:38px;
+}
+
+header p{
+    margin-top:10px;
+    font-size:18px;
+}
+
+.content{
+    padding:35px;
+}
+
+h2{
+    color:#1565c0;
+    margin-top:35px;
+    border-bottom:3px solid #1565c0;
+    padding-bottom:8px;
+}
+
+h3{
+    color:#2e7d32;
+    margin-top:20px;
+}
+
+p{
+    margin:10px 0;
+}
+
+ul,ol{
+    margin-left:30px;
+    margin-top:10px;
+}
+
+pre{
+    background:#272822;
+    color:#fff;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+    margin:15px 0;
+}
+
+code{
+    font-family:Consolas, monospace;
+}
+
+.note{
+    background:#fff8e1;
+    border-left:6px solid orange;
+    padding:15px;
+    margin:20px 0;
+}
+
+.info{
+    background:#e3f2fd;
+    border-left:6px solid #1565c0;
+    padding:15px;
+    margin:20px 0;
+}
+
+.success{
+    background:#e8f5e9;
+    border-left:6px solid green;
+    padding:15px;
+    margin:20px 0;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table th{
+    background:#1565c0;
+    color:#fff;
+    padding:12px;
+}
+
+table td{
+    border:1px solid #ddd;
+    padding:12px;
+}
+
+tr:nth-child(even){
+    background:#f8f8f8;
+}
+
+.workflow{
+    background:#f4f4f4;
+    border-left:5px solid #1565c0;
+    padding:20px;
+    font-family:monospace;
+    white-space:pre-line;
+    font-size:16px;
+}
+
+footer{
+    background:#1565c0;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<h1>Git & GitHub Notes</h1>
+<p>Basics to Clone Repository & Check Repository Status</p>
+</header>
+
+<div class="content">
+
+<h2>1. What is Git?</h2>
+
+<p>
+<b>Git</b> is a <b>Distributed Version Control System (DVCS)</b>.
+It helps developers keep track of changes made in project files over time.
+Git stores every version of your project so that you can restore previous versions whenever required.
+</p>
+
+<h3>Why do we use Git?</h3>
+
+<ul>
+<li>Track changes in source code.</li>
+<li>Restore previous versions of files.</li>
+<li>Work safely without losing code.</li>
+<li>Allow multiple developers to work together.</li>
+<li>Create separate branches for new features.</li>
+<li>Merge completed work into the main project.</li>
+</ul>
+
+<div class="success">
+<b>Example:</b><br>
+Suppose you accidentally delete some code today.
+Git allows you to restore yesterday's version easily.
+</div>
+
+<hr>
+
+<h2>2. What is GitHub?</h2>
+
+<p>
+<b>GitHub</b> is a cloud-based platform that hosts Git repositories online.
+It allows developers to store projects, collaborate with teams, and back up their code.
+</p>
+
+<div class="info">
+<b>Remember:</b>
+
+<ul>
+<li><b>Git</b> → Software used to track code.</li>
+<li><b>GitHub</b> → Online website where Git repositories are stored.</li>
+</ul>
+</div>
+
+<table>
+
+<tr>
+<th>Git</th>
+<th>GitHub</th>
+</tr>
+
+<tr>
+<td>Version Control Tool</td>
+<td>Cloud Hosting Platform</td>
+</tr>
+
+<tr>
+<td>Works Offline</td>
+<td>Requires Internet</td>
+</tr>
+
+<tr>
+<td>Installed on Computer</td>
+<td>Website for Collaboration</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>3. Repository (Repo)</h2>
+
+<p>
+A <b>Repository</b> is a project folder that Git tracks.
+It contains:
+</p>
+
+<ul>
+<li>Project files</li>
+<li>Folders</li>
+<li>Git history</li>
+<li>Commits</li>
+<li>Configuration files</li>
+</ul>
+
+<h3>Types of Repository</h3>
+
+<ol>
+<li>Local Repository</li>
+<li>Remote Repository</li>
+</ol>
+
+<hr>
+
+<h2>4. Local Repository</h2>
+
+<p>
+A Local Repository is stored on your own computer.
+You can edit files and use Git commands even without an internet connection.
+</p>
+
+<h3>Example Folder</h3>
+
+<pre><code>MyProject/</code></pre>
+
+<h3>Advantages</h3>
+
+<ul>
+<li>Works offline</li>
+<li>Fast operations</li>
+<li>Safe local development</li>
+</ul>
+
+<hr>
+
+<h2>5. Remote Repository</h2>
+
+<p>
+A Remote Repository is stored on GitHub.
+It is mainly used for:
+</p>
+
+<ul>
+<li>Backup</li>
+<li>Team collaboration</li>
+<li>Sharing projects</li>
+<li>Accessing projects from multiple devices</li>
+</ul>
+
+<h3>Example</h3>
+
+<pre><code>https://github.com/username/project-name</code></pre>
+
+<hr>
+
+<h2>Git Workflow</h2>
+
+<div class="workflow">
+
+Working Directory
+        │
+        ▼
+Local Git Repository
+        │
+        ▼
+Remote GitHub Repository
+
+</div>
+
+<div class="note">
+<b>Working Directory</b> → Where you write code.<br>
+<b>Local Repository</b> → Git stores project history on your computer.<br>
+<b>Remote Repository</b> → GitHub stores your project online.
+</div>
+
+<hr>
+
+<h2>6. Install Git</h2>
+
+<p>
+Download Git from the official website:
+</p>
+
+<pre><code>https://git-scm.com/</code></pre>
+
+<h3>Check Installation</h3>
+
+<pre><code>git --version</code></pre>
+
+<h3>Example Output</h3>
+
+<pre><code>git version 2.45.0</code></pre>
+
+<hr>
+
+<h2>7. Configure Git (First Time Only)</h2>
+
+<p>
+Before using Git, configure your username and email.
+These details appear in every commit you make.
+</p>
+
+<h3>Set Username</h3>
+
+<pre><code>git config --global user.name "Shivam"</code></pre>
+
+<h3>Set Email</h3>
+
+<pre><code>git config --global user.email "example@gmail.com"</code></pre>
+
+<h3>View Configuration</h3>
+
+<pre><code>git config --list</code></pre>
+
+<hr>
+
+<h2>8. Clone Repository</h2>
+
+<h3>What is Clone?</h3>
+
+<p>
+<b>Clone</b> means making a complete copy of a GitHub repository on your local computer.
+</p>
+
+<h3>Syntax</h3>
+
+<pre><code>git clone &lt;repository-url&gt;</code></pre>
+
+<h3>Example</h3>
+
+<pre><code>git clone https://github.com/shivam0-1/learn_Git_Github_Apna_College.git</code></pre>
+
+<h3>What Happens After Cloning?</h3>
+
+<ul>
+<li>Downloads all project files.</li>
+<li>Downloads complete Git history.</li>
+<li>Creates a Local Repository.</li>
+<li>Automatically connects to the Remote Repository.</li>
+</ul>
+
+<hr>
+
+<h2>9. Git Status</h2>
+
+<p>
+The <b>git status</b> command displays the current state of your repository.
+It is one of the most frequently used Git commands.
+</p>
+
+<h3>Command</h3>
+
+<pre><code>git status</code></pre>
+
+<h3>It Shows</h3>
+
+<ul>
+<li>Current branch name.</li>
+<li>Modified files.</li>
+<li>New (untracked) files.</li>
+<li>Deleted files.</li>
+<li>Files ready to commit (staged).</li>
+<li>Files not yet staged (unstaged).</li>
+</ul>
+
+<h3>Example (Clean Repository)</h3>
+
+<pre><code>On branch main
+
+nothing to commit,
+working tree clean</code></pre>
+
+<h3>Example (After Editing a File)</h3>
+
+<pre><code>Changes not staged for commit:
+
+modified: index.html</code></pre>
+
+<div class="note">
+Always run <b>git status</b> before making commits.
+It helps you know exactly what has changed.
+</div>
+
+<hr>
+
+<h2>Important Terms</h2>
+
+<table>
+
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+
+<tr>
+<td>Git</td>
+<td>Distributed Version Control System</td>
+</tr>
+
+<tr>
+<td>GitHub</td>
+<td>Cloud platform for hosting Git repositories</td>
+</tr>
+
+<tr>
+<td>Repository</td>
+<td>Project folder managed by Git</td>
+</tr>
+
+<tr>
+<td>Local Repository</td>
+<td>Repository stored on your computer</td>
+</tr>
+
+<tr>
+<td>Remote Repository</td>
+<td>Repository stored on GitHub</td>
+</tr>
+
+<tr>
+<td>Clone</td>
+<td>Copy a remote repository to your computer</td>
+</tr>
+
+<tr>
+<td>Status</td>
+<td>Shows the current state of the repository</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>Common Git Commands</h2>
+
+<table>
+
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td><code>git --version</code></td>
+<td>Check Git installation</td>
+</tr>
+
+<tr>
+<td><code>git config --global user.name "Name"</code></td>
+<td>Set Git username</td>
+</tr>
+
+<tr>
+<td><code>git config --global user.email "Email"</code></td>
+<td>Set Git email</td>
+</tr>
+
+<tr>
+<td><code>git config --list</code></td>
+<td>View Git configuration</td>
+</tr>
+
+<tr>
+<td><code>git clone &lt;URL&gt;</code></td>
+<td>Clone a GitHub repository</td>
+</tr>
+
+<tr>
+<td><code>git status</code></td>
+<td>Display the current repository status</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>Quick Revision</h2>
+
+<ul>
+<li>Git is a Version Control System.</li>
+<li>GitHub stores Git repositories online.</li>
+<li>A Repository contains project files and history.</li>
+<li>Local Repository is on your computer.</li>
+<li>Remote Repository is on GitHub.</li>
+<li><code>git clone</code> copies a repository from GitHub.</li>
+<li><code>git status</code> checks the current repository state.</li>
+</ul>
+
+<hr>
+
+<h2>Practice Exercise</h2>
+
+<ol>
+<li>Install Git.</li>
+<li>Verify installation using <code>git --version</code>.</li>
+<li>Configure username and email.</li>
+<li>Open Git Bash.</li>
+<li>Clone a public GitHub repository.</li>
+<li>Navigate into the cloned folder.</li>
+<li>Run <code>git status</code>.</li>
+<li>Observe whether the working tree is clean.</li>
+</ol>
+
+<div class="success">
+<b>Summary:</b><br>
+Git helps you manage and track code changes.<br>
+GitHub stores your repositories online.<br>
+The first commands every beginner should know are:
+<ul>
+<li>git --version</li>
+<li>git config</li>
+<li>git clone</li>
+<li>git status</li>
+</ul>
+</div>
+
+</div>
+
+<footer>
+<h3>Git & GitHub Notes</h3>
+<p>Basics to Clone Repository & Git Status | Prepared for Students</p>
+</footer>
+
+</div>
+
+</body>
+</html>
