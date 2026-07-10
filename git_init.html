@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Notes - From Git Init to Push Main</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f4f6f9;
+            color:#333;
+            line-height:1.7;
+        }
+
+        .container{
+            width:90%;
+            max-width:1100px;
+            margin:40px auto;
+            background:#fff;
+            padding:40px;
+            border-radius:10px;
+            box-shadow:0 5px 20px rgba(0,0,0,.1);
+        }
+
+        h1{
+            text-align:center;
+            color:#1565c0;
+            margin-bottom:20px;
+        }
+
+        h2{
+            color:#0d47a1;
+            margin-top:35px;
+            margin-bottom:10px;
+            border-bottom:2px solid #1565c0;
+            padding-bottom:8px;
+        }
+
+        h3{
+            margin-top:20px;
+            color:#1b5e20;
+        }
+
+        p{
+            margin:10px 0;
+        }
+
+        ul,ol{
+            margin-left:25px;
+            margin-top:10px;
+        }
+
+        pre{
+            background:#272822;
+            color:#f8f8f2;
+            padding:15px;
+            border-radius:8px;
+            overflow:auto;
+            margin:15px 0;
+        }
+
+        code{
+            font-family:Consolas, monospace;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+        }
+
+        table th{
+            background:#1565c0;
+            color:white;
+            padding:12px;
+        }
+
+        table td{
+            padding:12px;
+            border:1px solid #ddd;
+        }
+
+        tr:nth-child(even){
+            background:#f7f7f7;
+        }
+
+        .workflow{
+            background:#e3f2fd;
+            padding:20px;
+            border-left:5px solid #1565c0;
+            margin-top:20px;
+            font-family:monospace;
+            white-space:pre-line;
+        }
+
+        .note{
+            background:#fff3cd;
+            border-left:5px solid orange;
+            padding:15px;
+            margin-top:20px;
+        }
+
+        footer{
+            margin-top:40px;
+            text-align:center;
+            color:#666;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Git Notes</h1>
+<p style="text-align:center;font-size:18px;">
+From <strong>git init</strong> to <strong>git push origin main</strong>
+</p>
+
+<hr>
+
+<h2>1. What is Git?</h2>
+
+<p>
+Git is a <strong>Distributed Version Control System (DVCS)</strong> that helps developers track changes in source code and collaborate with others.
+</p>
+
+<h3>Advantages of Git</h3>
+
+<ul>
+<li>Track code changes</li>
+<li>Store project history</li>
+<li>Work with teams</li>
+<li>Restore previous versions</li>
+<li>Manage branches</li>
+</ul>
+
+<hr>
+
+<h2>2. Initialize a Git Repository</h2>
+
+<h3>Command</h3>
+
+<pre><code>git init</code></pre>
+
+<h3>Purpose</h3>
+
+<p>
+Creates a new Git repository in the current project folder.
+</p>
+
+<h3>Example</h3>
+
+<pre><code>mkdir MyProject
+cd MyProject
+git init</code></pre>
+
+<h3>Output</h3>
+
+<pre><code>Initialized empty Git repository</code></pre>
+
+<hr>
+
+<h2>3. Check Repository Status</h2>
+
+<h3>Command</h3>
+
+<pre><code>git status</code></pre>
+
+<h3>Purpose</h3>
+
+<ul>
+<li>Shows untracked files</li>
+<li>Shows modified files</li>
+<li>Shows staged files</li>
+<li>Shows files ready for commit</li>
+</ul>
+
+<h3>Example Output</h3>
+
+<pre><code>Untracked files:
+index.html</code></pre>
+
+<hr>
+
+<h2>4. Create Project Files</h2>
+
+<h3>Example</h3>
+
+<pre><code>touch index.html</code></pre>
+
+<p>or create files manually.</p>
+
+<h3>Check Status</h3>
+
+<pre><code>git status</code></pre>
+
+<pre><code>Untracked files:
+index.html</code></pre>
+
+<hr>
+
+<h2>5. Add Files to Staging Area</h2>
+
+<h3>Add One File</h3>
+
+<pre><code>git add index.html</code></pre>
+
+<h3>Add Multiple Files</h3>
+
+<pre><code>git add index.html style.css script.js</code></pre>
+
+<h3>Add Everything</h3>
+
+<pre><code>git add .</code></pre>
+
+<h3>Purpose</h3>
+
+<p>
+Moves files from the Working Directory to the Staging Area.
+</p>
+
+<h3>Check Status</h3>
+
+<pre><code>git status</code></pre>
+
+<pre><code>Changes to be committed:
+new file: index.html</code></pre>
+
+<hr>
+
+<h2>6. Commit Changes</h2>
+
+<h3>Command</h3>
+
+<pre><code>git commit -m "Initial commit"</code></pre>
+
+<h3>Purpose</h3>
+
+<p>
+Saves a permanent snapshot of all staged files.
+</p>
+
+<h3>Example</h3>
+
+<pre><code>git commit -m "Created homepage"</code></pre>
+
+<hr>
+
+<h2>7. View Commit History</h2>
+
+<h3>Complete History</h3>
+
+<pre><code>git log</code></pre>
+
+<h3>Short Version</h3>
+
+<pre><code>git log --oneline</code></pre>
+
+<h3>Example</h3>
+
+<pre><code>a25f9f1 Initial commit</code></pre>
+
+<hr>
+
+<h2>8. Configure Git (First Time Only)</h2>
+
+<h3>Set Username</h3>
+
+<pre><code>git config --global user.name "Your Name"</code></pre>
+
+<h3>Set Email</h3>
+
+<pre><code>git config --global user.email "you@example.com"</code></pre>
+
+<h3>View Configuration</h3>
+
+<pre><code>git config --list</code></pre>
+
+<hr>
+
+<h2>9. Create Repository on GitHub</h2>
+
+<ol>
+<li>Login to GitHub</li>
+<li>Click <strong>New Repository</strong></li>
+<li>Enter Repository Name</li>
+<li>Click Create Repository</li>
+<li>Copy Repository URL</li>
+</ol>
+
+<h3>Example URL</h3>
+
+<pre><code>https://github.com/username/myproject.git</code></pre>
+
+<hr>
+
+<h2>10. Connect Local Repository to GitHub</h2>
+
+<h3>Command</h3>
+
+<pre><code>git remote add origin https://github.com/username/myproject.git</code></pre>
+
+<h3>Check Remote</h3>
+
+<pre><code>git remote -v</code></pre>
+
+<h3>Example Output</h3>
+
+<pre><code>origin  https://github.com/username/myproject.git (fetch)
+origin  https://github.com/username/myproject.git (push)</code></pre>
+
+<hr>
+
+<h2>11. Rename Branch to Main</h2>
+
+<p>
+Some older Git versions create the default branch as <strong>master</strong>. Rename it to <strong>main</strong>.
+</p>
+
+<pre><code>git branch -M main</code></pre>
+
+<h3>Check Current Branch</h3>
+
+<pre><code>git branch</code></pre>
+
+<pre><code>* main</code></pre>
+
+<hr>
+
+<h2>12. Push Project to GitHub</h2>
+
+<h3>First Push</h3>
+
+<pre><code>git push -u origin main</code></pre>
+
+<h3>Meaning</h3>
+
+<ul>
+<li><strong>push</strong> → Upload commits</li>
+<li><strong>-u</strong> → Set upstream branch</li>
+<li><strong>origin</strong> → Remote repository</li>
+<li><strong>main</strong> → Branch name</li>
+</ul>
+
+<h3>Next Time</h3>
+
+<pre><code>git push</code></pre>
+
+<hr>
+
+<h2>Complete Git Workflow</h2>
+
+<pre><code>git init
+
+git status
+
+git add .
+
+git commit -m "Initial commit"
+
+git branch -M main
+
+git remote add origin https://github.com/username/repository.git
+
+git push -u origin main</code></pre>
+
+<hr>
+
+<h2>Daily Git Workflow</h2>
+
+<pre><code>git status
+
+git add .
+
+git commit -m "Describe your changes"
+
+git push</code></pre>
+
+<hr>
+
+<h2>Git Workflow Diagram</h2>
+
+<div class="workflow">
+Working Directory
+      │
+      │ git add
+      ▼
+Staging Area
+      │
+      │ git commit
+      ▼
+Local Repository
+      │
+      │ git push
+      ▼
+GitHub Repository
+</div>
+
+<hr>
+
+<h2>Common Git Commands</h2>
+
+<table>
+
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>git init</td>
+<td>Initialize Git Repository</td>
+</tr>
+
+<tr>
+<td>git status</td>
+<td>Check repository status</td>
+</tr>
+
+<tr>
+<td>git add .</td>
+<td>Stage all files</td>
+</tr>
+
+<tr>
+<td>git add filename</td>
+<td>Stage specific file</td>
+</tr>
+
+<tr>
+<td>git commit -m "message"</td>
+<td>Create a commit</td>
+</tr>
+
+<tr>
+<td>git log</td>
+<td>Show commit history</td>
+</tr>
+
+<tr>
+<td>git log --oneline</td>
+<td>Short commit history</td>
+</tr>
+
+<tr>
+<td>git branch</td>
+<td>Show branches</td>
+</tr>
+
+<tr>
+<td>git branch -M main</td>
+<td>Rename branch to main</td>
+</tr>
+
+<tr>
+<td>git remote add origin URL</td>
+<td>Connect local repository with GitHub</td>
+</tr>
+
+<tr>
+<td>git remote -v</td>
+<td>View remote repository</td>
+</tr>
+
+<tr>
+<td>git push -u origin main</td>
+<td>Push project first time</td>
+</tr>
+
+<tr>
+<td>git push</td>
+<td>Push latest commits</td>
+</tr>
+
+<tr>
+<td>git pull</td>
+<td>Download latest changes</td>
+</tr>
+
+<tr>
+<td>git clone URL</td>
+<td>Download an existing repository</td>
+</tr>
+
+</table>
+
+<hr>
+
+<h2>Interview Questions</h2>
+
+<h3>1. What is Git?</h3>
+
+<p>
+Git is a Distributed Version Control System used to track changes in source code.
+</p>
+
+<h3>2. What does git init do?</h3>
+
+<p>
+Creates a new Git repository in the current directory.
+</p>
+
+<h3>3. What is the Staging Area?</h3>
+
+<p>
+A temporary area where files are prepared before committing.
+</p>
+
+<h3>4. Difference between git add and git commit?</h3>
+
+<ul>
+<li><strong>git add</strong> stages changes.</li>
+<li><strong>git commit</strong> permanently saves staged changes.</li>
+</ul>
+
+<h3>5. What is origin?</h3>
+
+<p>
+The default name of the remote GitHub repository.
+</p>
+
+<h3>6. What does git push do?</h3>
+
+<p>
+Uploads local commits to GitHub.
+</p>
+
+<h3>7. What does git branch -M main do?</h3>
+
+<p>
+Renames the current branch to main.
+</p>
+
+<h3>8. Why use git status?</h3>
+
+<p>
+To check the current state of files and staging area.
+</p>
+
+<hr>
+
+<h2>Practice Exercise</h2>
+
+<ol>
+<li>Create a folder named <strong>GitPractice</strong>.</li>
+<li>Run <code>git init</code>.</li>
+<li>Create an <code>index.html</code> file.</li>
+<li>Run <code>git status</code>.</li>
+<li>Stage the file using <code>git add .</code>.</li>
+<li>Commit using <code>git commit -m "Initial commit"</code>.</li>
+<li>Create a GitHub repository.</li>
+<li>Connect it using <code>git remote add origin &lt;repository-url&gt;</code>.</li>
+<li>Rename the branch using <code>git branch -M main</code>.</li>
+<li>Push the project using <code>git push -u origin main</code>.</li>
+</ol>
+
+<div class="note">
+<strong>Tip:</strong> Follow this sequence every day while working on a project:
+<strong>git status → git add → git commit → git push</strong>.
+</div>
+
+<footer>
+<hr>
+<h3>Git Notes</h3>
+<p>From <strong>git init</strong> to <strong>git push origin main</strong></p>
+<p>Prepared for Students 🚀</p>
+</footer>
+
+</div>
+
+</body>
+</html>
